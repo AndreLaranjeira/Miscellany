@@ -1,6 +1,14 @@
 # Miscellany
 
-A repository to house binaries, templates and configurations files that don't warrant an individual repository. All content in this repository is **not licensed and free to use!**
+A repository to house binaries, templates and configurations files that don't warrant an individual repository. All content in this repository is **unlicensed and free to use!**
+
+## Scripts
+
+Scripts are files that can be run from a terminal to execute a set of commands.
+
+The following itens are included in this folder:
+
+- `update.sh`: A script to run update commands individually or all at once. With this, you won't have to waste time trying to figure out the right update command syntax or forget to run updates.
 
 ## Templates
 
