@@ -1,54 +1,54 @@
-# Executable name:
+# Executable name.
 EXE = executable
 
-# Compiler configuration:
+# Project paths.
+INC_DIR = include
+OBJ_DIR = src/obj
+SRC_DIR = src
+
+# File extensions.
+INC_EXT = h
+OBJ_EXT = o
+SRC_EXT = c
+
+# Compiler configuration.
 COMP = gcc
-CFLAGS = -Wall -g -I $(IDIR)
+CFLAGS = -Wall -g -I $(INC_DIR)
 LIBS = -lm
 
-# Project paths:
-IDIR = include
-ODIR = src/obj
-SDIR = src
-
-# File extensions:
-IEXT = h
-OEXT = o
-SEXT = c
-
-# Project main:
+# Project main.
 MAIN = main
 
-# Project modules:
+# Project modules.
 MODULES =	# Add module names (shared by a source and header file pair) here.
 
-# Makefile function definitions:
+# Makefile function definitions.
 FULL_PATH = $(patsubst %,$(2)/%.$(3),$(1))
 
-# Joining file names with their respective paths and extensions:
-DEPS = $(call FULL_PATH,$(MODULES),$(IDIR),$(IEXT))
-OBJ = $(call FULL_PATH,$(MODULES) $(MAIN),$(ODIR),$(OEXT))
-# SRC = $(call FULL_PATH,$(MODULES) $(MAIN),$(SDIR),$(SEXT))
+# Joining file names with their respective paths and extensions.
+DEPS = $(call FULL_PATH,$(MODULES),$(INC_DIR),$(INC_EXT))
+OBJ = $(call FULL_PATH,$(MODULES) $(MAIN),$(OBJ_DIR),$(OBJ_EXT))
+# SRC = $(call FULL_PATH,$(MODULES) $(MAIN),$(SRC_DIR),$(SRC_EXT))
 
-# Project executable compilation rule:
+# Project executable compilation rule.
 $(EXE): $(OBJ)
 	$(COMP) -o $@ $^ $(CFLAGS) $(LIBS)
 
-# Object files compilation rule:
-$(ODIR)/%.$(OEXT): $(SDIR)/%.$(SEXT) $(DEPS)
-	@if [ ! -d $(ODIR) ]; then mkdir $(ODIR); fi
+# Object files compilation rule.
+$(OBJ_DIR)/%.$(OBJ_EXT): $(SRC_DIR)/%.$(SRC_EXT) $(DEPS)
+	@if [ ! -d $(OBJ_DIR) ]; then mkdir $(OBJ_DIR); fi
 	$(COMP) -c -o $@ $< $(CFLAGS)
 
-# List of aditional makefile commands:
+# List of aditional makefile commands.
 .PHONY: all
 .PHONY: clean
 
-# Generate all available targets:
+# Generate all available targets.
 all: $(EXE)
 
-# Command to clean object files and project executable:
+# Command to clean object files and project executable.
 clean:
-	@rm -f $(ODIR)/*.o *~ core
+	@rm -f $(OBJ_DIR)/*.o *~ core
 	@if [ -f $(EXE) ]; then \
 		rm -i $(EXE); \
 	fi
