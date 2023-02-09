@@ -1,5 +1,6 @@
 #!/bin/bash
 # Description: Script to run update commands easily.
+
 # IMPORTANT: The default commands presented are configured for Manjaro Linux.
 # If you are on other variants of Linux, you might need to change them!
 
